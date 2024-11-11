@@ -29,11 +29,18 @@ public class IM0003_execrcise : MonoBehaviour
     public Rect toggleMusicPos;
     public Rect toggleSoundPos;
 
-    private bool isSelMusic;
-    private bool isSelSound;
+    private bool isSelMusic = true;
+    private bool isSelSound = true;
 
     public Rect btoPos;
     public GUIStyle Style;
+
+
+    private float musicValue = 1;
+    public Rect musicPos;
+
+    private float soundValue = 1;
+    public Rect soundPos;
 
 
     private void Awake()
@@ -47,6 +54,11 @@ public class IM0003_execrcise : MonoBehaviour
     {
         isSelMusic = GUI.Toggle(toggleMusicPos, isSelMusic, "音乐开关");
         isSelSound = GUI.Toggle(toggleSoundPos, isSelSound, "音效开关");
+
+        musicValue = GUI.HorizontalSlider(musicPos, musicValue, 0.0f, 1.0f);
+        soundValue = GUI.HorizontalSlider(soundPos, soundValue, 0.0f, 1.0f);
+
+
 
         if (GUI.Button(btoPos, "", Style))
         {
