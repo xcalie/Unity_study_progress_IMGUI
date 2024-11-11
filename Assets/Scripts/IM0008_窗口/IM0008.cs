@@ -6,6 +6,11 @@ using UnityEngine;
 public class IM0008 : MonoBehaviour
 {
 
+
+
+    private Rect dragWinPos = new Rect(400, 400, 200, 150);
+
+
     private void OnGUI()
     {
         #region 窗口
@@ -25,7 +30,14 @@ public class IM0008 : MonoBehaviour
         // 可以理解为该窗口在最上层 其他按钮都点不到了
         // 只能点击该窗口的控件
 
-        GUI.ModalWindow(3, new(300, 100, 200, 150), DrawWindow, "模态窗口");
+        //GUI.ModalWindow(3, new(300, 100, 200, 150), DrawWindow, "模态窗口");
+
+        #endregion
+
+        #region 拖动窗口
+
+        //位置赋值只是前提
+        dragWinPos = GUI.Window(4, dragWinPos, DrawWindow, "拖动窗口");
 
         #endregion
     }
@@ -34,14 +46,21 @@ public class IM0008 : MonoBehaviour
     {
         switch (id)
         {
-            case 0:
+            case 1:
                 GUI.Button(new Rect(0, 30, 30, 20), "1");
                 break;
-            case 1:
+            case 2:
                 GUI.Button(new Rect(0, 30, 30, 20), "2");
                 break;
-            case 2:
+            case 3:
                 GUI.Button(new Rect(0, 30, 30, 20), "3");
+                break;
+            case 4:
+                //该API写在窗口函数中调用，可以是窗口被拖动
+                //传入Rect参数的重载作用 决定窗口那一部分可以被拖动
+                //默认不填就是 窗口的所有位置都能被拖动
+                GUI.DragWindow(new Rect(0, 0, 1000,20));
+                GUI.Button(new Rect(0, 30, 30, 20), "4");
                 break;
             default:
                 break;

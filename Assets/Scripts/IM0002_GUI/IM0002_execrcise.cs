@@ -69,7 +69,8 @@ public class IM0002_execrcise : MonoBehaviour
         }
         if (GUI.Button(btn3Pos, "退出游戏", btnStyle))
         {
-
+            IM0008_execrcise.ShowMe();
+            IM0002_execrcise.HideMe();
         }
     }
 }
