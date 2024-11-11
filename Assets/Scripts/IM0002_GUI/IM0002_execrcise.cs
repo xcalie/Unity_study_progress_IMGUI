@@ -36,6 +36,11 @@ public class IM0002_execrcise : MonoBehaviour
     public GUIStyle btnStyle;
 
 
+    public Rect bkPos;
+    public Texture bktex;
+
+
+
     private void Awake()
     {
         instance = this;
@@ -44,13 +49,18 @@ public class IM0002_execrcise : MonoBehaviour
 
     private void OnGUI()
     {
+        GUI.DrawTexture(bkPos, bktex);
+
+
         // 游戏标题
         GUI.Label(labPos, labContent, labStyle);
 
         // 3个游戏按钮
         if (GUI.Button(btn1Pos, "开始游戏", btnStyle))
         {
-            SceneManager.LoadScene("GameScene");
+            //SceneManager.LoadScene("GameScene");
+            IM0002_execrcise.HideMe();
+            IM0004_execrcise.ShowMe();
         }
         if (GUI.Button(btn2Pos, "设置游戏", btnStyle))
         {

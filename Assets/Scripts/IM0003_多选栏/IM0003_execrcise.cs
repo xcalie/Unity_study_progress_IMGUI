@@ -42,6 +42,9 @@ public class IM0003_execrcise : MonoBehaviour
     private float soundValue = 1;
     public Rect soundPos;
 
+    public Rect bkPos;
+    public Texture bktex;
+
 
     private void Awake()
     {
@@ -52,6 +55,9 @@ public class IM0003_execrcise : MonoBehaviour
 
     private void OnGUI()
     {
+        GUI.DrawTexture(bkPos, bktex);
+
+
         isSelMusic = GUI.Toggle(toggleMusicPos, isSelMusic, "音乐开关");
         isSelSound = GUI.Toggle(toggleSoundPos, isSelSound, "音效开关");
 
